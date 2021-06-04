@@ -1,25 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public Rigidbody2D rb; 
+    public Rigidbody2D rb;
 
-    void Start()
+    private void Start()
     {
-        rb.velocity = transform.right * speed;  
+        rb.velocity = transform.right * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Emany");
+        if (col.gameObject.tag == "Emany") ;
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
         }
-      
     }
-
 }
