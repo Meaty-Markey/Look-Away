@@ -4,7 +4,7 @@ public class Playermovement : MonoBehaviour
 {
     public float MovementSpeed = 1;
     public float JumpForce = 1;
-    public float dash;
+
 
     private Rigidbody2D _rb;
     private Vector2 moveDirection;
@@ -28,20 +28,12 @@ public class Playermovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && Mathf.Abs(_rb.velocity.y) < 0.001f)
         {
             _rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-            dash = 1;
         }
 
-        else if (Input.GetKeyDown(KeyCode.W) && dash > 0)
-        {
-            transform.position += new Vector3(5, 0, 0);
-            dash = 0;
-        }
 
-        else if (Input.GetKeyDown(KeyCode.S) && dash > 0)
-        {
-            transform.position += new Vector3(-5, 0, 0);
-            dash = 0;
-        }
+
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D col)
