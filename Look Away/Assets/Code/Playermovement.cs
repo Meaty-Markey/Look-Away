@@ -1,30 +1,29 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 
 public class Playermovement : MonoBehaviour
 {
     public float MovementSpeed = 1;
     public float JumpForce = 1;
-    public float dash = 0;
-
-    SpriteRenderer sr; 
+    public float dash;
 
     private Rigidbody2D _rb;
-    private Vector2 moveDirection; 
+    private Vector2 moveDirection;
 
-    void Start()
+    private SpriteRenderer sr;
+
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         var MoveUp = Input.GetAxis("Vertical");
         var MoveLeft = Input.GetAxis("Horizontal");
-        moveDirection = new UnityEngine.Vector2(MoveUp, MoveLeft).normalized;
+        moveDirection = new Vector2(MoveUp, MoveLeft).normalized;
 
         transform.position += new Vector3(MoveLeft, 0, 0) * Time.deltaTime * MovementSpeed;
 
-  
 
         if (Input.GetButtonDown("Jump") && Mathf.Abs(_rb.velocity.y) < 0.001f)
         {
@@ -45,13 +44,12 @@ public class Playermovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-       //if (col.gameObject.tag == "Emany") ;
-       //{
-         // Destroy(gameObject);
-       //}
-
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Died");
+            Destroy(gameObject);
+        }
     }
-} 
-
+}

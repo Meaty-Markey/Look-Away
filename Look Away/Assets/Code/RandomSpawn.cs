@@ -1,30 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
 {
-    public float time = 0;
+    public float time;
 
     public Transform sp;
     public GameObject EmanyPrefab;
 
-    void Update()
+    private void Update()
     {
         time -= Time.deltaTime;
 
         if (time < 0)
         {
             Spawn();
-            time = (Random.Range(0, 5)); 
+            time = Random.Range(0, 5);
         }
-
     }
 
 
-    void Spawn()
+    private void Spawn()
     {
         Instantiate(EmanyPrefab, sp.position, sp.rotation);
     }
 }
-
