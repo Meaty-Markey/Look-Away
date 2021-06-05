@@ -34,7 +34,7 @@ public class PointAndShoot : MonoBehaviour
         superbar.SetMaxSuper(maxsuper);
     }
 
-   
+
     void Update()
     {
         time -= Time.deltaTime;
@@ -75,6 +75,7 @@ public class PointAndShoot : MonoBehaviour
             firesuperBullet(direction, rotationZ);
             currentsuper -= 5;
         }
+
     }
     void fireBullet(Vector2 direction, float rotationZ)
     {
@@ -91,4 +92,5 @@ public class PointAndShoot : MonoBehaviour
         b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
     }
+
 }
