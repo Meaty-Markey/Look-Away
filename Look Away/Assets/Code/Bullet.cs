@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Code
 {
-    public float speed = 20f;
-    public Rigidbody2D rb;
-
-    private void Start()
+    public class Bullet : MonoBehaviour
     {
-        rb.velocity = transform.right * speed;
-    }
+        public float speed = 20f;
+        public Rigidbody2D rb;
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Enemy") 
+        private void Start()
         {
-            Destroy(col.gameObject);
-            Destroy(gameObject);
+            rb.velocity = transform.right * speed;
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.tag == "Enemy")
+            {
+                Destroy(col.gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

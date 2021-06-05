@@ -1,30 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-public class RandomSpawn : MonoBehaviour
+namespace Code
 {
-    public float time;
-
-    public GameObject EmanyPrefab;
-    public GameObject LightPrefab;
-
-    private void Update()
+    public class RandomSpawn : MonoBehaviour
     {
-        time -= Time.deltaTime;
+        public float time;
 
-        if (time < 0)
+        [FormerlySerializedAs("EmanyPrefab")] public GameObject emanyPrefab;
+        [FormerlySerializedAs("LightPrefab")] public GameObject lightPrefab;
+
+        private void Update()
         {
-            Spawn();
-            time = Random.Range(0, 2);
+            time -= Time.deltaTime;
+
+            if (time < 0)
+            {
+                Spawn();
+                time = Random.Range(0, 2);
+            }
         }
-    }
 
 
-    private void Spawn()
-    {
-        Instantiate(EmanyPrefab);
-        EmanyPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
+        private void Spawn()
+        {
+            Instantiate(emanyPrefab);
+            emanyPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
 
-        Instantiate(LightPrefab);
-        LightPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
+            Instantiate(lightPrefab);
+            lightPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
+        }
     }
 }

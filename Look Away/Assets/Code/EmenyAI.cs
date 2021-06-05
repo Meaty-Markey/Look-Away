@@ -1,35 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EmenyAI : MonoBehaviour
+namespace Code
 {
-    public Transform player;
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 movement;
+    public class EmenyAI : MonoBehaviour
+    {
+        public Transform player;
+        public float moveSpeed = 5f;
+        private Vector2 _movement;
+        private Rigidbody2D _rb;
+    
+        private void Start()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            player = GameObject.Find("Player").transform;
+        }
+    
+        private void Update()
+        {
+            var direction = player.position - transform.position;
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            _rb.rotation = angle;
+            direction.Normalize();
+            _movement = direction;
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = this.GetComponent<Rigidbody2D>();
-    }
+        private void FixedUpdate()
+        {
+            MoveCharacter(_movement);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
-        movement = direction;
-    }
-    private void FixedUpdate()
-    {
-        moveCharacter(movement);
-    }
-    void moveCharacter(Vector2 direction)
-    {
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        private void MoveCharacter(Vector2 direction)
+        {
+            _rb.MovePosition((Vector2) transform.position + direction * moveSpeed * Time.deltaTime);
+        }
     }
 }

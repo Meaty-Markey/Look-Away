@@ -1,48 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Playermovement : MonoBehaviour
+namespace Code
 {
-
-    private Rigidbody2D rb;
-
-    public float moveSpeed;
-
-    private Vector2 moveDirection;
-
-    private SpriteRenderer sr;
-
-    private void Start()
+    public class Playermovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [FormerlySerializedAs("MovementSpeed")] public float movementSpeed = 5;
+        private Rigidbody2D _rb;
+        private SpriteRenderer _sr;
 
-    void Update()
-    {
-        ProcessInputs();
-    }
-q
-    void FixedUpdate()
-    {
-        Move();
-    }
-
-    void ProcessInputs()
-    {
-        moveDirection = new UnityEngine.Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        print("It works");
-    }
-
-    void Move()
-    {
-        rb.velocity = new UnityEngine.Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-    }
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Enemy"))
+        private void Start()
         {
-            Debug.Log("Died");
-            Destroy(gameObject);
+            _rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update()
+        {
+            var moveUp = Input.GetAxis("Vertical");
+            var moveLeft = Input.GetAxis("Horizontal");
+            transform.position += new Vector3(moveLeft, moveUp, 0) * Time.deltaTime * movementSpeed;
         }
     }
 }

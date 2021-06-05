@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+namespace Code
 {
-    public Transform target;
-    public Vector3 offset; 
-    
-    private void FixedUpdate()
+    public class FollowCamera : MonoBehaviour
     {
-        transform.position = target.position+offset; 
+        public Transform target;
+        public Vector3 offset;
+
+        private void FixedUpdate()
+        {
+            transform.position = target.position + offset;
+        }
     }
 }
