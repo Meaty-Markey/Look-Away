@@ -9,9 +9,7 @@ namespace Code
         public GameObject bulletPrefab;
         public GameObject bulletStart;
 
-
         public float bulletSpeed = 60.0f;
-
 
         public float time;
 

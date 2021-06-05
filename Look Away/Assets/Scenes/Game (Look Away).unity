@@ -192,7 +192,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 551aa6bd70ff47a48aedc39a893a17e3, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.3764706, b: 0.2784314, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &432119025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aaed0c672ff2c804eaeb8aff88c27963, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88a749b46bb8c545be8bcd9f0560710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
+  movementSpeed: 5
 --- !u!50 &1804551604
 Rigidbody2D:
   serializedVersion: 4
@@ -1976,9 +1976,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  EmanyPrefab: {fileID: 5671796702085750822, guid: b095fe6065575dd48b0b101fa7ea22f6,
+  emanyPrefab: {fileID: 5671796702085750822, guid: b095fe6065575dd48b0b101fa7ea22f6,
     type: 3}
-  LightPrefab: {fileID: 1365018046}
+  lightPrefab: {fileID: 1365018046}
 --- !u!1 &2040584240
 GameObject:
   m_ObjectHideFlags: 0

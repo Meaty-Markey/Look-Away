@@ -20,5 +20,16 @@ namespace Code
             var moveLeft = Input.GetAxis("Horizontal");
             transform.position += new Vector3(moveLeft, moveUp, 0) * Time.deltaTime * movementSpeed;
         }
+
+
+         void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.tag == "Emany")
+            {
+                Destroy(gameObject);
+            }
+
+
+        }
     }
 }

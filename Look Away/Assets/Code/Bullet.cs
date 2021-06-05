@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
+using TMPro;
 
-namespace Code
-{
+
     public class Bullet : MonoBehaviour
     {
-        public float speed = 20f;
         public Rigidbody2D rb;
+
+       
 
         private void Start()
         {
-            rb.velocity = transform.right * speed;
+           
         }
+
+    void Update()
+    {
+     
+    }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
@@ -19,6 +25,7 @@ namespace Code
                 Destroy(col.gameObject);
                 Destroy(gameObject);
             }
+
+
         }
     }
-}
