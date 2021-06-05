@@ -3,8 +3,7 @@
 public class Playermovement : MonoBehaviour
 {
     public float MovementSpeed = 1;
-    public float JumpForce = 1;
-
+    
 
     private Rigidbody2D _rb;
     private Vector2 moveDirection;
@@ -23,16 +22,6 @@ public class Playermovement : MonoBehaviour
         moveDirection = new Vector2(MoveUp, MoveLeft).normalized;
 
         transform.position += new Vector3(MoveLeft, 0, 0) * Time.deltaTime * MovementSpeed;
-
-
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(_rb.velocity.y) < 0.001f)
-        {
-            _rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        }
-
-
-
-
 
     }
 

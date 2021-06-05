@@ -57,10 +57,11 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Bullet.cs" />
      <Compile Include="Assets\Code\Enamy.cs" />
-     <Compile Include="Assets\Code\ParticleScript.cs" />
      <Compile Include="Assets\Code\Playermovement.cs" />
      <Compile Include="Assets\Code\PointAndShoot.cs" />
      <Compile Include="Assets\Code\RandomSpawn.cs" />
+     <Compile Include="Assets\Code\SuperBar.cs" />
+     <Compile Include="Assets\Code\superbullet.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/User/Documents/GitHub/Look-Away/Look Away/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
