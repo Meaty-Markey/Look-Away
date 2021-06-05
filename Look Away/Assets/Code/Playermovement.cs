@@ -2,27 +2,39 @@
 
 public class Playermovement : MonoBehaviour
 {
-    public float MovementSpeed = 1;
-    
 
-    private Rigidbody2D _rb;
+    private Rigidbody2D rb;
+
+    public float moveSpeed;
+
     private Vector2 moveDirection;
 
     private SpriteRenderer sr;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    void Update()
     {
-        var MoveUp = Input.GetAxis("Vertical");
-        var MoveLeft = Input.GetAxis("Horizontal");
-        moveDirection = new Vector2(MoveUp, MoveLeft).normalized;
+        ProcessInputs();
+    }
+q
+    void FixedUpdate()
+    {
+        Move();
+    }
 
-        transform.position += new Vector3(MoveLeft, 0, 0) * Time.deltaTime * MovementSpeed;
+    void ProcessInputs()
+    {
+        moveDirection = new UnityEngine.Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        print("It works");
+    }
 
+    void Move()
+    {
+        rb.velocity = new UnityEngine.Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
