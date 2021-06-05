@@ -31,7 +31,7 @@ namespace Code
 
         private void MoveCharacter(Vector2 direction)
         {
-            _rb.MovePosition((Vector2) transform.position + direction * moveSpeed * Time.deltaTime);
+            _rb.MovePosition((Vector2) transform.position + direction * (moveSpeed * Time.deltaTime));
         }
     }
 }

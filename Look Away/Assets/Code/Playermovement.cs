@@ -18,7 +18,7 @@ namespace Code
         {
             var moveUp = Input.GetAxis("Vertical");
             var moveLeft = Input.GetAxis("Horizontal");
-            transform.position += new Vector3(moveLeft, moveUp, 0) * Time.deltaTime * movementSpeed;
+            transform.position += new Vector3(moveLeft, moveUp, 0) * (Time.deltaTime * movementSpeed);
         }
     }
 }
