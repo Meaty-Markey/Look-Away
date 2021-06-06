@@ -7,7 +7,7 @@ namespace Code
         public Transform target;
         public Vector3 offset;
 
-        private void FixedUpdate()
+        private void Update()
         {
             transform.position = target.position + offset;
         }

@@ -12,24 +12,27 @@ namespace Code
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _rb.isKinematic = true;
+            _rb.useFullKinematicContacts = true;
         }
 
         private void Update()
         {
             var moveUp = Input.GetAxis("Vertical");
             var moveLeft = Input.GetAxis("Horizontal");
-            transform.position += new Vector3(moveLeft, moveUp, 0) * Time.deltaTime * movementSpeed;
+            _rb.velocity = (new Vector2(moveLeft, moveUp) * (Time.deltaTime * movementSpeed));
+            
         }
 
 
-         void OnCollisionEnter2D(Collision2D col)
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.tag == "Emany")
+            if (col.gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
             }
 
-            if (col.gameObject.tag == "Wall")
+            if (col.gameObject.CompareTag("Wall"))
             {
                 Destroy(gameObject);
             }

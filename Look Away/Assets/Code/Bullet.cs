@@ -1,37 +1,20 @@
 ﻿using UnityEngine;
-using TMPro;
 
-
+namespace Code
+{
     public class Bullet : MonoBehaviour
     {
-      
-        public Rigidbody2D rb;
-
-        public float time; 
-
+        private const float Time = 1.5f;
         private void Start()
         {
-        time = 5;
+            Destroy(gameObject, Time);
         }
-
-    void Update()
-    {
-        time -= Time.deltaTime; 
-
-        if (time < 0)
-        {
-            Destroy(gameObject);
-            time = Random.Range(0, 5); 
-        }
-    }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.tag == "Enemy")
-            {
-          
+            if (!col.gameObject.CompareTag("Enemy")) return;
             Destroy(col.gameObject);
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
+}

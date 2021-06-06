@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ParticlesScript : MonoBehaviour
+namespace Code
 {
-   void OnCollisionEnter2D(Collision2D col)
+    public class ParticlesScript : MonoBehaviour
     {
-        if (col.gameObject.tag == "Bullet")
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            GetComponent<AudioSource>().Play();
+            if (!col.gameObject.CompareTag("Bullet")) return;
             GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = false;
         }
