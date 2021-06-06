@@ -29,6 +29,11 @@ namespace Code
                 Destroy(gameObject);
             }
 
+            if (col.gameObject.tag == "Wall")
+            {
+                Destroy(gameObject);
+            }
+            
 
         }
     }

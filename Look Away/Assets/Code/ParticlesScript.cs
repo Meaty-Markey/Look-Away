@@ -8,6 +8,7 @@ public class ParticlesScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Bullet")
         {
+            GetComponent<AudioSource>().Play();
             GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = false;
         }

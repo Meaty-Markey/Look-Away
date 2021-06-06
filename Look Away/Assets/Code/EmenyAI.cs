@@ -22,7 +22,9 @@ namespace Code
             _rb.rotation = angle;
             direction.Normalize();
             _movement = direction;
-        }
+
+            
+            }
 
         private void FixedUpdate()
         {
@@ -31,7 +33,7 @@ namespace Code
 
         private void MoveCharacter(Vector2 direction)
         {
-            _rb.MovePosition((Vector2) transform.position + direction * moveSpeed * Time.deltaTime);
-        }
+            _rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
+        } 
     }
 }

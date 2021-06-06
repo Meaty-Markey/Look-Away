@@ -9,6 +9,7 @@ namespace Code
         public GameObject bulletPrefab;
         public GameObject bulletStart;
 
+
         public float bulletSpeed = 60.0f;
 
         public float time;
@@ -34,7 +35,7 @@ namespace Code
             var rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 var distance = difference.magnitude;
                 Vector2 direction = difference / distance;
@@ -45,6 +46,7 @@ namespace Code
 
         private void FireBullet(Vector2 direction, float rotationZ)
         {
+            GetComponent<AudioSource>().Play();
             var b = Instantiate(bulletPrefab);
             b.transform.position = bulletStart.transform.position;
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
