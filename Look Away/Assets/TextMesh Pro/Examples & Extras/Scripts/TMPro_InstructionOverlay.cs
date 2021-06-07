@@ -3,31 +3,36 @@ using UnityEngine;
 
 namespace TextMesh_Pro.Scripts
 {
-    
     public class TMPro_InstructionOverlay : MonoBehaviour
     {
+        public enum FpsCounterAnchorPositions
+        {
+            TopLeft,
+            BottomLeft,
+            TopRight,
+            BottomRight
+        }
 
-        public enum FpsCounterAnchorPositions { TopLeft, BottomLeft, TopRight, BottomRight };
+        private const string instructions =
+            "Camera Control - <#ffff00>Shift + RMB\n</color>Zoom - <#ffff00>Mouse wheel.";
 
         public FpsCounterAnchorPositions AnchorPosition = FpsCounterAnchorPositions.BottomLeft;
-
-        private const string instructions = "Camera Control - <#ffff00>Shift + RMB\n</color>Zoom - <#ffff00>Mouse wheel.";
+        private Camera m_camera;
+        private Transform m_frameCounter_transform;
+        private TextContainer m_textContainer;
 
         private TextMeshPro m_TextMeshPro;
-        private TextContainer m_textContainer;
-        private Transform m_frameCounter_transform;
-        private Camera m_camera;
 
         //private FpsCounterAnchorPositions last_AnchorPosition;
 
-        void Awake()
+        private void Awake()
         {
             if (!enabled)
                 return;
 
             m_camera = Camera.main;
 
-            GameObject frameCounter = new GameObject("Frame Counter");
+            var frameCounter = new GameObject("Frame Counter");
             m_frameCounter_transform = frameCounter.transform;
             m_frameCounter_transform.parent = m_camera.transform;
             m_frameCounter_transform.localRotation = Quaternion.identity;
@@ -35,7 +40,8 @@ namespace TextMesh_Pro.Scripts
 
             m_TextMeshPro = frameCounter.AddComponent<TextMeshPro>();
             m_TextMeshPro.font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
-            m_TextMeshPro.fontSharedMaterial = Resources.Load<Material>("Fonts & Materials/LiberationSans SDF - Overlay");
+            m_TextMeshPro.fontSharedMaterial =
+                Resources.Load<Material>("Fonts & Materials/LiberationSans SDF - Overlay");
 
             m_TextMeshPro.fontSize = 30;
 
@@ -46,15 +52,11 @@ namespace TextMesh_Pro.Scripts
             //last_AnchorPosition = AnchorPosition;
 
             m_TextMeshPro.text = instructions;
-
         }
 
 
-
-
-        void Set_FrameCounter_Position(FpsCounterAnchorPositions anchor_position)
+        private void Set_FrameCounter_Position(FpsCounterAnchorPositions anchor_position)
         {
-
             switch (anchor_position)
             {
                 case FpsCounterAnchorPositions.TopLeft:
