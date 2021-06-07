@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement; 
 
 namespace Code
 {
@@ -11,6 +12,8 @@ namespace Code
 
         private void Start()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
             _rb = GetComponent<Rigidbody2D>();
             _rb.isKinematic = true;
             _rb.useFullKinematicContacts = true;
@@ -30,6 +33,8 @@ namespace Code
             if (col.gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("Main Menu");
+
             }
 
             if (col.gameObject.CompareTag("Wall"))

@@ -17,7 +17,7 @@ namespace Code
             if (time < 0)
             {
                 Spawn();
-                time = Random.Range(0, 2);
+                time = Random.Range(0, 4);
             }
         }
 
@@ -25,10 +25,10 @@ namespace Code
         private void Spawn()
         {
             Instantiate(emanyPrefab);
-            emanyPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
+            emanyPrefab.transform.position = new Vector2(Random.Range(-90, 27), Random.Range(-66, 56));
 
             Instantiate(lightPrefab);
-            lightPrefab.transform.position = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
+            lightPrefab.transform.position = new Vector2(Random.Range(-90, 27), Random.Range(-66, 56));
         }
     }
 }
